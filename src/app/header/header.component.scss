@@ -1,13 +1,71 @@
-@import "assets/styles/_variables.scss";
+@use "../../styles/variables" as cores;
+
+
 
 header{
-    width: 1200px;
+    width: 1250px;
+    height: 150px;
     margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    .components{
-        
+    color: cores.$text-secundaria;
+
+    .component{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+
+        .animation-click-link{
+            cursor: pointer;
+            width: 200px;
+            height: 40px;
+            position: relative;
+            gap: 10px;
+            
+            a{
+                font-size: 20px;
+                display: inline-block;
+                transition: transform 0.8s ease-in-out;
+                border: 2px solid transparent;
+                padding: 10px;
+                animation-duration: 0.6s;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+                animation-play-state: paused;
+                
+    
+                &:hover{
+                    transform: translateX(15px);
+                    animation-name: borderGrow;
+                    animation-play-state: running;
+                    text-align: center;
+                    color: cores.$text-quarto;
+                }
+
+            }
+         }
+
     }
 }
+
+@keyframes borderGrow {
+  0% {
+    border-color: transparent;
+    transform: scale(1);
+  }
+  50% {
+    border-color: cores.$background-secundaria;
+    transform: scale(1.05); 
+    color: cores.$text-quarto;
+  }
+  100% {
+    border-color: cores.$background-secundaria;
+    transform: scale(1.05) translateX(25px); 
+    color: cores.$text-quarto;
+  }
+}
+
